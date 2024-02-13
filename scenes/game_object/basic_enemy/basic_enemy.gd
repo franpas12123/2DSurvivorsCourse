@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const Max_SPEED = 50.0
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _physics_process(_delta):
 	velocity = get_direction_to_player() * Max_SPEED
@@ -12,7 +13,3 @@ func get_direction_to_player():
 	if player_node:
 		return (player_node.global_position - global_position).normalized()
 	return Vector2.ZERO
-
-
-func _on_area_2d_area_entered(_area:Area2D):
-	queue_free()
